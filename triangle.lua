@@ -15,12 +15,9 @@ function Triangle:set_starting_point()
 end
 
 function Triangle:init(screen_w, screen_h)
-  print("Initializing Triangle")
   self.screen_width = screen_w
   self.screen_height = screen_h
   self.edge_offset = 20 -- pixels
-  print(self.screen_width)
-  print(self.screen_height)
   self.points = {}
   -- Create the verticies of the triangle
   self.p1 = Point()
