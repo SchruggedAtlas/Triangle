@@ -1,12 +1,18 @@
 require 'triangle'
 
 function love.load()
-    -- love.window.setMode(0,0, {vsync=true})
+    love.window.setMode(0,0, {vsync=true})
     total_time = 0
     screen_w = love.graphics.getWidth()
     screen_h = love.graphics.getHeight()
-    triangle = Triangle()
-    triangle:init(screen_w, screen_h)
+    num_generators = 100
+    trainagles = {}
+
+    for i=1, num_generators do
+        local generator = Triangle()
+        generator:init(screen_w, screen_h)
+        table.insert(trainagles, generator)
+    end
 end
 
 function love.update(dt)
@@ -14,6 +20,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    -- love.graphics.circle("fill", 10, 10, 2)
-    triangle:controller()
+    for index, t in ipairs(trainagles) do
+        t:controller()
+    end
 end
