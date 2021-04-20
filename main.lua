@@ -5,13 +5,19 @@ function love.load()
     total_time = 0
     screen_w = love.graphics.getWidth()
     screen_h = love.graphics.getHeight()
-    num_generators = 100
+    num_generators = 1000
     trainagles = {}
 
     for i=1, num_generators do
         local generator = Triangle()
         generator:init(screen_w, screen_h)
         table.insert(trainagles, generator)
+    end
+end
+
+function love.keypressed(key)
+    if key == "escape" then
+      love.event.push("quit")
     end
 end
 

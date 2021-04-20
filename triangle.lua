@@ -67,6 +67,16 @@ end
 
 function Triangle:draw()
   for index, pt in ipairs(self.points) do
+    if pt.y <= self.screen_height/2 then
+      -- Set color to red
+      love.graphics.setColor(1,0,0)
+    elseif (pt.y > self.screen_height/2) and (pt.x <= self.screen_width/2) then
+      -- Set color to blue
+      love.graphics.setColor(0,1,0)
+    else
+      -- Set color to yellow
+      love.graphics.setColor(1,1,0)
+    end
     love.graphics.circle("fill", pt.x, pt.y, 1)
   end
 end
