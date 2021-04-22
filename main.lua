@@ -5,7 +5,7 @@ function love.load()
     total_time = 0
     screen_w = love.graphics.getWidth()
     screen_h = love.graphics.getHeight()
-    num_generators = 1000
+    num_generators = 10000
     trainagles = {}
 
     for i=1, num_generators do

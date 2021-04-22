@@ -9,15 +9,16 @@ Triangle = class(
 
 function Triangle:set_starting_point()
   self.starting_point = Point()
-  local start_x = (self.p1.x + self.p2.x)/2
-  local start_y = (self.p1.y + self.p2.y)/2
+  local start_x = (self.p1.x + self.p2.x)/self.divisor
+  local start_y = (self.p1.y + self.p2.y)/self.divisor
   self.starting_point:init(start_x, start_y)
 end
 
 function Triangle:init(screen_w, screen_h)
   self.screen_width = screen_w
   self.screen_height = screen_h
-  self.edge_offset = 20 -- pixels
+  self.edge_offset = 10 -- pixels
+  self.divisor = 2
   self.points = {}
   -- Create the verticies of the triangle
   self.p1 = Point()
@@ -43,18 +44,18 @@ function Triangle:controller()
   local yy = 0
 
   if(reference_point == 1) then
-    xx = (self.p1.x + self.starting_point.x)/2
-    yy = (self.p1.y + self.starting_point.y)/2
+    xx = (self.p1.x + self.starting_point.x)/self.divisor
+    yy = (self.p1.y + self.starting_point.y)/self.divisor
   end
 
   if(reference_point == 2) then
-    xx = (self.p2.x + self.starting_point.x)/2
-    yy = (self.p2.y + self.starting_point.y)/2
+    xx = (self.p2.x + self.starting_point.x)/self.divisor
+    yy = (self.p2.y + self.starting_point.y)/self.divisor
   end
 
   if(reference_point == 3) then
-    xx = (self.p3.x + self.starting_point.x)/2
-    yy = (self.p3.y + self.starting_point.y)/2
+    xx = (self.p3.x + self.starting_point.x)/self.divisor
+    yy = (self.p3.y + self.starting_point.y)/self.divisor
   end
   -- Add a point at the halfway point. Set starting_point to the added point
   local new_point = Point()
